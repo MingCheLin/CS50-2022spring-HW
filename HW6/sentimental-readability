@@ -1,0 +1,28 @@
+# TODO
+def main():
+    # Get input and initialize the varible
+    S = input("Text: ")
+    letters = 0
+    words = 1
+    sentences = 0
+    # Go through the letters to count words, letters and sentences
+    for i in range(len(S)):
+        if S[i].isalpha():
+            letters += 1
+        elif S[i] == " ":
+            words += 1
+        elif S[i] in "?!.":
+            sentences += 1
+    # Calculate the grade
+    grade = round((letters / words * 100 * 0.0588) - (sentences / words * 100 * 0.296) - 15.8)
+    # print grade
+    if grade >= 16:
+        print("Grade 16+")
+    elif grade < 1:
+        print("Before Grade 1")
+    else:
+        print(f"Grade {grade}")
+
+
+if __name__ == "__main__":
+    main()
