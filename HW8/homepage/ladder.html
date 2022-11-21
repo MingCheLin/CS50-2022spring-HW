@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        <link href="styles.css" rel="stylesheet">
+        <title>Ladder</title>
+    </head>
+
+    <body>
+        <div class="container-fluid">
+            <div class="fixed-top">
+                <h1 class="text-info text-center">Climb ladder(under construction)</h1>
+                <ul>
+                    <div class = "row justify-content-md-center" id = "result_group">
+                        <div class="col" id="result1">
+                            <input type="text" class="results"  placeholder="result1">
+                        </div>
+                        <div class="col" id="result2">
+                            <input type="text" class="results"  placeholder="result2">
+                        </div>
+                        <div class="col" id="result3">
+                            <input type="text" class="results"  placeholder="result3">
+                        </div>
+                    </div>
+                </ul>
+            </div>
+
+
+            <div class="fixed-bottom">
+                <form>
+                    <ul>
+                        <div class = "row justify-content-md-center" id = "name_group">
+                            <div class="col" id="name1">
+                                <input type="text" class="names" placeholder="name1">
+                            </div>
+                            <div class="col" id="name2">
+                                <input type="text" class="names" placeholder="name2">
+                            </div>
+                            <div class="col" id="name3">
+                                <input type="text" class="names" placeholder="name3">
+                            </div>
+                        </div>
+                    </ul>
+
+                    <div class = "row justify-content-md-center">
+                        <div class="col col-1">
+                            <button type="button" class="add btn btn-light">add</button>
+                        </div>
+                        <div class="col col-1">
+                            <button type="button" class="remove btn btn-light">remove</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <script>
+            let num = 3;
+
+
+                let add = document.querySelector('.add');
+                add.addEventListener('click', function(){
+                    if (num < 6){
+                        num ++;
+
+                        let fragment1 =  document.createDocumentFragment();
+                        let DIV1 = document.createElement('div');
+                        DIV1.className = "col";
+                        DIV1.id = "name" + num;
+                        let new_name = fragment1.appendChild(DIV1).appendChild(document.createElement('input'));
+                        new_name.type = "text";
+                        new_name.className = "names";
+                        new_name.placeholder = "name" + num;
+                        document.getElementById("name_group").appendChild(fragment1);
+
+                        let fragment2 =  document.createDocumentFragment();
+                        let DIV2 = document.createElement('div');
+                        DIV2.className = "col";
+                        DIV2.id = "result" + num;
+                        let new_result = fragment2.appendChild(DIV2).appendChild(document.createElement('input'));
+                        new_result.type = "text";
+                        new_result.className = "results";
+                        new_result.placeholder = "result" + num;
+                        document.getElementById("result_group").appendChild(fragment2);
+
+                    }
+                });
+                let remove = document.querySelector('.remove');
+                remove.addEventListener('click', function(){
+                    if (num > 2){
+                        let new_name =  document.getElementById('name'+num);
+                        let new_result = document.getElementById('result'+num);
+                        new_name.remove();
+                        new_result.remove();
+                        num --;
+                    }
+                });
+
+        </script>
+    </body>
+</html>

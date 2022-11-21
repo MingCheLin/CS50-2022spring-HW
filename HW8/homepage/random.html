@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        <link href="styles.css" rel="stylesheet">
+        <title>Random number</title>
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div class="fixed-top">
+                <h1 class="header text-center">Random number</h1>
+                <form>
+                    <div class = "row justify-content-md-center">
+                        Lower limit:
+                        <div class="col-lg-1" id="lower_limit">
+                            <input type="number" class="" placeholder="0">
+                        </div>
+                        Upper limit:
+                        <div class="col-lg-1" id="upper_limit">
+                            <input type="number" class="names" placeholder="100">
+                        </div>
+                        <div class="button col-lg-1" id="start">
+                            <button type="button" class="btn btn-light">start</button>
+                        </div>
+                    </div>
+                </form>
+                <h1 class="result text-center" id = 'result'></h1>
+            </div>
+        </div>
+
+
+        <script>
+            let upper = 100;
+            let under = 0;
+            let under_limit = document.querySelector('#lower_limit');
+            let upper_limit = document.querySelector('#upper_limit');
+            let start = document.querySelector('#start');
+            let value =  document.getElementById('result');
+
+            under_limit.addEventListener('input', function(e){under=e.target.value;});
+            upper_limit.addEventListener('input', function(e){upper=e.target.value;});
+            start.addEventListener('click', function(){
+                if (under > upper){
+                    value.textContent="Lower limit shoultn't larger than the upper.";
+                }
+                else{
+                    value.textContent=Math.floor(Math.random() * (upper - under + 1) + parseInt(under,10));
+                }
+            })
+
+        </script>
+    </body>
+</html>
