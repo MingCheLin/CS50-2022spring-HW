@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    History
+{% endblock %}
+
+{% block main %}
+    <div class="mb-3">
+        <table class="center table table-primary table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Action</th>
+                    <th scope="col">Stock</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Shares</th>
+                    <th scope="col">Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for action in history %}
+                <tr>
+                    <td>{{ action.action }}</td>
+                    <td>{{ action.stock }}</td>
+                    <td>{{ action.price | usd}}</td>
+                    <td>{{ action.shares }}</td>
+                    <td>{{ action.time }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
